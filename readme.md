@@ -1,20 +1,20 @@
-# Historial de voz para orca
+# Speech History for Orca
 
-Esta extensión está basada en el complemento para NVDA[Speech History](https://github.com/jscholes/nvda-speech-history).
+This extension is based on the [Speech History](https://github.com/jscholes/nvda-speech-history) add-on for NVDA.
 
-Speech History es una extensión que permite revisar los últimos 500 elementos verbalizados por orca.
+Speech History is an extension that allows reviewing the last 500 items spoken by Orca.
 
-## Instalación
+## Installation
 
-Para ejecutar esta extensión necesitas mínimo la versión 51 alfa de orca.
-Copia el script speech_history.py a `/home/tuusuario/.local/share/orca/extensions`
-Necesitas aprobar la extensión. Puedes hacerlo desde la configuración de orca o ejecutando el siguiente comando:
-`orca --approve-extension speech_history.py`
+To run this extension you need at least Orca version 51 alpha.
+Copy the SpeechHistory folder to `/home/youruser/.local/share/orca/extensions`
+You need to approve the extension. You can do this from Orca settings or by running the following command:
+`orca --approve-extension SpeechHistory`
 
-## Atajos
+## Shortcuts
 
-Nota: los siguientes atajos se pueden personalizar desde la configuración de orca en la categoría comandos/Speech History.
+Note: the following shortcuts can be customized from Orca settings in the Speech History commands category.
 
-- Verbalizar el elemento anterior en el historial: shift+f11
-- Verbalizar el siguiente elemento en el historial: shift+f12
-- Copiar el elemento seleccionado en el historial o la última frase verbalizada por orca: f12
+- Speak previous item in history: shift+f11
+- Speak next item in history: shift+f12
+- Copy selected item in history or last phrase spoken by Orca: f12

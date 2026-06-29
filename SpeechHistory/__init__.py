@@ -29,11 +29,12 @@ class SpeechHistory(Extension):
 		self._history_pos: int = 0
 		self._beep_frequency = 1500  # Hz
 		self._beep_duration = 120    # ms
-		self._speech_internal_mode: bool = False  # Flag to prevent recursion
+		# Flag to prevent recursion
+		self._stop_history_append: bool = False
 
 	# Speech hook
 	def on_speech_output(self, output: SpeechOutput) -> SpeechOutputResult | None:
-		if self._speech_internal_mode:
+		if self._stop_history_append:
 			return None
 
 		text = output.text
@@ -119,9 +120,9 @@ class SpeechHistory(Extension):
 			self._beep(500, 120)
 
 		text = self._history[self._history_pos]
-		self._speech_internal_mode = True
+		self._stop_history_append = True
 		self.controller.present_message_internal(text)
-		self._speech_internal_mode = False
+		self._stop_history_append = False
 		return True
 
 	def _next_string(self) -> bool:
@@ -137,9 +138,9 @@ class SpeechHistory(Extension):
 			self._beep(500, 120)
 
 		text = self._history[self._history_pos]
-		self._speech_internal_mode = True
+		self._stop_history_append = True
 		self.controller.present_message_internal(text)
-		self._speech_internal_mode = False
+		self._stop_history_append = False
 		return True
 
 	def _beep(self, frequency: int, duration_ms: int) -> None:
