@@ -11,7 +11,6 @@ from orca import keybindings
 from orca.command import Command, KeyboardCommand
 from orca.extension import Extension, SpeechOutput, SpeechOutputResult
 from orca.sound import get_player, Tone
-from orca.clipboard import get_presenter
 from collections import deque
 
 class SpeechHistory(Extension):
@@ -102,8 +101,7 @@ class SpeechHistory(Extension):
 
 		# Get the text at the current position and copy it to the clipboard
 		text = self._history[self._history_pos]
-		clipboard = get_presenter()
-		clipboard.set_text(text)
+		self.controller.set_clipboard_text_internal(text)
 		self._beep(1000, 120)
 		return True
 
