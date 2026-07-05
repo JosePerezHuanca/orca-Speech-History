@@ -10,7 +10,6 @@
 from orca import keybindings
 from orca.command import Command, KeyboardCommand
 from orca.extension import Extension, SpeechOutput, SpeechOutputResult
-from orca.sound import get_player, Tone
 from collections import deque
 
 class SpeechHistory(Extension):
@@ -26,8 +25,6 @@ class SpeechHistory(Extension):
 		super().__init__()
 		self._history: deque[str] = deque(maxlen=500)
 		self._history_pos: int = 0
-		self._beep_frequency = 1500  # Hz
-		self._beep_duration = 120    # ms
 		# Flag to prevent recursion
 		self._stop_history_append: bool = False
 
@@ -102,7 +99,7 @@ class SpeechHistory(Extension):
 		# Get the text at the current position and copy it to the clipboard
 		text = self._history[self._history_pos]
 		self.controller.set_clipboard_text_internal(text)
-		self._beep(1000, 120)
+		self.controller.play_tone_internal(0.12, 1000, volume=0.5)
 		return True
 
 	def _prev_string(self) -> bool:
@@ -115,7 +112,7 @@ class SpeechHistory(Extension):
 		# Check upper limit
 		if self._history_pos > len(self._history) - 1:
 			self._history_pos -= 1
-			self._beep(500, 120)
+			self.controller.play_tone_internal(0.12, 500, volume=0.5)
 
 		text = self._history[self._history_pos]
 		self._stop_history_append = True
@@ -133,19 +130,10 @@ class SpeechHistory(Extension):
 		# Check lower limit
 		if self._history_pos < 0:
 			self._history_pos += 1
-			self._beep(500, 120)
+			self.controller.play_tone_internal(0.12, 500, volume=0.5)
 
 		text = self._history[self._history_pos]
 		self._stop_history_append = True
 		self.controller.present_message_internal(text)
 		self._stop_history_append = False
 		return True
-
-	def _beep(self, frequency: int, duration_ms: int) -> None:
-		player = get_player()
-		tone = Tone(
-			duration=duration_ms / 1000.0,
-			frequency=frequency,
-			volume=0.5
-		)
-		player.play(tone)
