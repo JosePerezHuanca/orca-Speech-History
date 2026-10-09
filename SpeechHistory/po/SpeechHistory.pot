@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Speech history\n"
+"POT-Creation-Date: 2026-10-08 23:33-0300\n"
+"PO-Revision-Date: 2026-10-08 23:34-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: __init__.py\n"
+
+#: __init__.py:21
+msgid "Speech History"
+msgstr ""
+
+#: __init__.py:22
+msgid "History of speech announcements"
+msgstr ""
+
+#: __init__.py:57
+msgid "Copy the current history item to the clipboard"
+msgstr ""
+
+#: __init__.py:73
+msgid "Review previous history item"
+msgstr ""
+
+#: __init__.py:89
+msgid "Review next history item"
+msgstr ""
+
+#: __init__.py:105
+msgid "Start recording speech output"
+msgstr ""
+
+#: __init__.py:121
+msgid "Stop recording speech output and copy it to the clipboard"
+msgstr ""
+
+#: __init__.py:135 __init__.py:146 __init__.py:164
+msgid "There are no items in history"
+msgstr ""
+
+#: __init__.py:183
+msgid "Already recording speech"
+msgstr ""
+
+#: __init__.py:189
+msgid "Started recording speech"
+msgstr ""
+
+#: __init__.py:196
+msgid "Not currently recording speech"
+msgstr ""
+
+#: __init__.py:204
+msgid "Recorded speech copied to clipboard"
+msgstr ""
