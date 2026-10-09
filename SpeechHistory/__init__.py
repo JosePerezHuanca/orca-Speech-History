@@ -9,14 +9,17 @@
 
 from orca import keybindings
 from orca.command import Command, KeyboardCommand
-from orca.extension import Extension, SpeechOutput, SpeechOutputResult
+from orca.extension import Extension, SpeechOutput, SpeechOutputResult, get_translation
 from collections import deque
+
+_translation = get_translation(__file__)
+_ = _translation.gettext
 
 class SpeechHistory(Extension):
 	# Provides a history of Orca's speech
 	# Metadata
-	GROUP_LABEL="Speech History"
-	DESCRIPTION = "History of speech announcements"
+	GROUP_LABEL = _("Speech History")
+	DESCRIPTION = _("History of speech announcements")
 	VERSION="2.0"
 	AUTHOR="José Pérez"
 
@@ -51,7 +54,7 @@ class SpeechHistory(Extension):
 				"copyLast",
 				self._copy_last,
 				self.GROUP_LABEL,
-				"Copy the current history item to the clipboard",
+				_("Copy the current history item to the clipboard"),
 				desktop_keybinding=keybindings.KeyBinding(
 					"F12",
 					keybindings.NO_MODIFIER_MASK,
@@ -67,7 +70,7 @@ class SpeechHistory(Extension):
 				"prevString",
 				self._prev_string,
 				self.GROUP_LABEL,
-				"Review previous history item",
+				_("Review previous history item"),
 				desktop_keybinding=keybindings.KeyBinding(
 					"F11",
 					keybindings.SHIFT_MODIFIER_MASK,
@@ -83,7 +86,7 @@ class SpeechHistory(Extension):
 				"nextString",
 				self._next_string,
 				self.GROUP_LABEL,
-				"Review next history item",
+				_("Review next history item"),
 				desktop_keybinding=keybindings.KeyBinding(
 					"F12",
 					keybindings.SHIFT_MODIFIER_MASK,
@@ -99,7 +102,7 @@ class SpeechHistory(Extension):
 				"startRecording",
 				self._start_recording,
 				self.GROUP_LABEL,
-				"Start recording speech output",
+				_("Start recording speech output"),
 				desktop_keybinding=keybindings.KeyBinding(
 					"F11",
 					keybindings.ORCA_SHIFT_MODIFIER_MASK,
@@ -115,7 +118,7 @@ class SpeechHistory(Extension):
 				"stopRecording",
 				self._stop_recording,
 				self.GROUP_LABEL,
-				"Stop recording speech output and copy it to the clipboard",
+				_("Stop recording speech output and copy it to the clipboard"),
 				desktop_keybinding=keybindings.KeyBinding(
 					"F12",
 					keybindings.ORCA_SHIFT_MODIFIER_MASK,
@@ -129,7 +132,7 @@ class SpeechHistory(Extension):
 
 	def _copy_last(self) -> bool:
 		if not self._history:
-			self.controller.present_message_internal("There are no items in history")
+			self.controller.present_message_internal(_("There are no items in history"))
 			return True
 
 		# Get the text at the current position and copy it to the clipboard
@@ -140,7 +143,7 @@ class SpeechHistory(Extension):
 
 	def _prev_string(self) -> bool:
 		if not self._history:
-			self.controller.present_message_internal("There are no items in history")
+			self.controller.present_message_internal(_("There are no items in history"))
 			return True
 
 		self._history_pos += 1
@@ -158,7 +161,7 @@ class SpeechHistory(Extension):
 
 	def _next_string(self) -> bool:
 		if not self._history:
-			self.controller.present_message_internal("There are no items in history")
+			self.controller.present_message_internal(_("There are no items in history"))
 			return True
 
 		self._history_pos -= 1
@@ -177,20 +180,20 @@ class SpeechHistory(Extension):
 	def _start_recording(self) -> bool:
 		if self._recording:
 			self._stop_history_append = True
-			self.controller.present_message_internal("Already recording speech")
+			self.controller.present_message_internal(_("Already recording speech"))
 			self._stop_history_append = False
 			return True
 
 		self._recording = True
 		self._stop_history_append = True
-		self.controller.present_message_internal("Started recording speech")
+		self.controller.present_message_internal(_("Started recording speech"))
 		self._stop_history_append = False
 		return True
 
 	def _stop_recording(self) -> bool:
 		if not self._recording:
 			self._stop_history_append = True
-			self.controller.present_message_internal("Not currently recording speech")
+			self.controller.present_message_internal(_("Not currently recording speech"))
 			self._stop_history_append = False
 			return True
 
@@ -198,6 +201,6 @@ class SpeechHistory(Extension):
 		self.controller.set_clipboard_text_internal("\n".join(self._recorded))
 		self._recorded.clear()
 		self._stop_history_append = True
-		self.controller.present_message_internal("Recorded speech copied to clipboard")
+		self.controller.present_message_internal(_("Recorded speech copied to clipboard"))
 		self._stop_history_append = False
 		return True
