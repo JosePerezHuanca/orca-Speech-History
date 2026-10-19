@@ -18,3 +18,5 @@ Note: the following shortcuts can be customized from Orca settings in the Speech
 - Speak previous item in history: shift+f11
 - Speak next item in history: shift+f12
 - Copy selected item in history or last phrase spoken by Orca: f12
+- Start recording speech output: orca+shift+f11
+- Stop recording speech output and copy it to the clipboard: orca+shift+f12

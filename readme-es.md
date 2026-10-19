@@ -1,6 +1,6 @@
 # Historial de voz para orca
 
-Esta extensión está basada en el complemento para NVDA[Speech History](https://github.com/jscholes/nvda-speech-history).
+Esta extensión está basada en el complemento para NVDA [Speech History](https://github.com/jscholes/nvda-speech-history).
 
 Speech History es una extensión que permite revisar los últimos 500 elementos verbalizados por orca.
 
@@ -18,3 +18,5 @@ Nota: los siguientes atajos se pueden personalizar desde la configuración de or
 - Verbalizar el elemento anterior en el historial: shift+f11
 - Verbalizar el siguiente elemento en el historial: shift+f12
 - Copiar el elemento seleccionado en el historial o la última frase verbalizada por orca: f12
+- Iniciar la grabación de la salida de voz: orca+shift+f11
+- Detener la grabación de la salida de voz y copiarla al portapapeles: orca+shift+f12
