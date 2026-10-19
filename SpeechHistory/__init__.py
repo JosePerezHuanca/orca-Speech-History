@@ -9,7 +9,7 @@
 
 from orca import keybindings
 from orca.command import Command, KeyboardCommand
-from orca.extension import Extension, SpeechOutput, SpeechOutputResult, get_translation
+from orca.extension import Extension, ExtensionPreference, SpeechOutput, SpeechOutputResult, get_translation
 from collections import deque
 
 _translation = get_translation(__file__)
@@ -26,12 +26,24 @@ class SpeechHistory(Extension):
 	# Constructor
 	def __init__(self) -> None:
 		super().__init__()
-		self._history: deque[str] = deque(maxlen=500)
+		max_history_len = self.settings.get("max_history_len", 500)
+		self._history: deque[str] = deque(maxlen=max_history_len)
 		self._history_pos: int = 0
 		# Flag to prevent recursion
 		self._stop_history_append: bool = False
 		self._recording: bool = False
 		self._recorded: list[str] = []
+
+	def get_preferences(self) -> list[ExtensionPreference]:
+		return [
+			ExtensionPreference.integer(
+				"max_history_len",
+				_("Maximum number of history entries"),
+				500,
+				1,
+				5000
+			)
+		]
 
 	# Speech hook
 	def on_speech_output(self, output: SpeechOutput) -> SpeechOutputResult | None:
