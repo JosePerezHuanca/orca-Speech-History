@@ -38,7 +38,7 @@ class SpeechHistory(Extension):
 		return [
 			ExtensionPreference.integer(
 				"max_history_len",
-				_("Maximum number of history entries"),
+				_("Maximum number of history entries (requires orca restart to take effect)"),
 				500,
 				1,
 				5000
