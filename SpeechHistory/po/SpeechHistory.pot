@@ -1,8 +1,13 @@
+# Orca Extension: Speech History
+# Copyright (C) 2026 José Pérez
+# This file is distributed under the same license as the Speech History package.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Speech history\n"
-"POT-Creation-Date: 2026-10-08 23:33-0300\n"
-"PO-Revision-Date: 2026-10-08 23:34-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-19 14:02-0300\n"
+"PO-Revision-Date: 2026-10-19 14:02-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -21,42 +26,47 @@ msgstr ""
 msgid "History of speech announcements"
 msgstr ""
 
-#: __init__.py:57
+#: __init__.py:41
+msgid ""
+"Maximum number of history entries (requires orca restart to take effect)"
+msgstr ""
+
+#: __init__.py:69
 msgid "Copy the current history item to the clipboard"
 msgstr ""
 
-#: __init__.py:73
+#: __init__.py:85
 msgid "Review previous history item"
 msgstr ""
 
-#: __init__.py:89
+#: __init__.py:101
 msgid "Review next history item"
 msgstr ""
 
-#: __init__.py:105
+#: __init__.py:117
 msgid "Start recording speech output"
 msgstr ""
 
-#: __init__.py:121
+#: __init__.py:133
 msgid "Stop recording speech output and copy it to the clipboard"
 msgstr ""
 
-#: __init__.py:135 __init__.py:146 __init__.py:164
+#: __init__.py:147 __init__.py:158 __init__.py:176
 msgid "There are no items in history"
 msgstr ""
 
-#: __init__.py:183
+#: __init__.py:195
 msgid "Already recording speech"
 msgstr ""
 
-#: __init__.py:189
+#: __init__.py:201
 msgid "Started recording speech"
 msgstr ""
 
-#: __init__.py:196
+#: __init__.py:208
 msgid "Not currently recording speech"
 msgstr ""
 
-#: __init__.py:204
+#: __init__.py:216
 msgid "Recorded speech copied to clipboard"
 msgstr ""
